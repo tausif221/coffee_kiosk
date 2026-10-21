@@ -1,0 +1,29 @@
+# Define the Immutable Tuple
+# RAW SOC SYSTEM LOGS
+# Format: [SEVERITY] | IP_ADDRESS | USERNAME | PORT | EVENT_STATUS
+raw_forensic_logs = [
+"[CRITICAL] | 192.168.1.105 | Admin_User | 22 | failed_login",
+"[WARNING] | 10.0.0.50 | root | 443 | MALWARE_SIGNATURE_DETECTED",
+"[CRITICAL] | 172.16.254.1 | unknown_user | 80 | SQL_INJECTION_ATTEMPT",
+"[ALERT] | 192.168.1.200 | SYS_ADMIN | 3389 | UNAUTHORIZED_ACCESS",
+"[WARNING] | 10.0.0.12 | test_acc | 8080 | brute_force_suspected"]
+
+clean_ip = raw_forensic_logs[0].split("|")[1].strip()
+print(clean_ip)
+
+server_log = "CRITICAL_ALERT | root_admin | 10.0.0.45 | SSH_BRUTE_FORCE"
+log_parts = server_log.split(" | ")
+print(f"Attacker Username: {log_parts[1]}, Attacker IP: {log_parts[2]}")
+
+secure_ports = (22, 80, 443, 3389)
+port = int(input("Which port would you like to scan? "))
+
+if port in secure_ports:
+    print("Port is recognized in secure configurations.")
+else:
+    print("ALERT: Port is unauthorized!")
+
+
+challenge_log = " Admin,192.168.1.50,Failed "
+cleaned_list = challenge_log.strip().split(",")
+print("Cleaned List:", cleaned_list)
